@@ -1,0 +1,184 @@
+
+* {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 
+  Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    margin: 0;
+    position:relative;
+    width: 100%;
+    height: max-content;
+    background: #ffffff;
+    font-size: 15px;
+  }
+
+  .content {
+    display: flex;
+  }
+  .error-message{
+    color: #FF0F0F;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    white-space: nowrap;
+    display: flex;
+    float: right;
+    margin-right: 100px;
+    align-self: self-end;
+    margin-top: 10px;
+  }
+  .error-message-mail{
+    color: #FF0F0F;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    white-space: nowrap;
+    align-self: self-end;
+    margin-top: 10px;
+    display: flex;
+    justify-content: right;
+    margin-right: 100px;
+  }
+  .banner {
+    width: 45%;
+}
+.bold{
+    font-weight: bolder;
+}
+
+.login_form {
+  width: 600px;
+  height: 510px;
+  margin: auto;
+  margin-top: 30px; 
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #F3F9F3;
+  padding: 50px 5px;
+  box-shadow: 0 0 10px rgba(167, 165, 165, 0.3);
+  border-radius: 10px;
+}
+
+  h2{
+  width: 519px;
+  height: 34px;
+  margin-top: 60px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 30px;
+  text-align: center;
+  color: #2D982A;
+  }
+  .container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  }
+  .container__input{
+      display: flex;
+      width: 90%;
+      flex-direction: column;
+      padding: 0px;
+      gap: 18px;
+      margin-top: 10px;
+      margin-left:90px
+
+  }
+  .input--content{
+      float: right;
+      display: flex;
+      flex-direction:row;
+
+  }
+  .input--content input{
+      width: 263px;
+      height: 25px;
+      border: 0px;
+      background-color: #ffffff;
+      margin-right:90px;
+
+  }
+  .gender input{ 
+    width: 16px !important;height: 16px;
+    margin-right: 5px;
+  }
+  [type="radio"]:checked {
+    background-color: #2D982A;
+    border: 2px solid #2D982A;
+  }
+  .gender .input--content{
+    width: 60%;
+    display:flex;
+    gap: 75px;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 15px;
+  }
+  .container__input--item .material{
+      width: 7px;
+      height: 7px;
+      font-style: normal;
+      font-weight: 200;
+      font-size: 14px;
+      line-height: 16px;
+      align-items:flex-start;
+      color: red;  
+
+  }
+  .container__checkbox{
+      width: 90%;
+      margin-bottom: 20px;
+  }
+  .checkbox{
+      background: #2D982A !important;
+  }
+  .container__checkbox a{
+      float: right;
+      font-weight: bold;
+      color: #2D982A !important;
+  }
+  .login_button{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 130px;
+        height: 40px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        background: #2D982A;
+        border: 0PX;
+        border-radius: 10px;
+        color: white !important;
+        margin-top: 20px;
+  }
+  .content--bottom{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+  }
+  .content--bottom p{
+    margin-bottom:5px;
+  }
+  .content--bottom a{
+      color: #2D982A;
+      font-weight: bold;
+      margin-bottom: 55px;
+  }
+
+  .condition{
+    margin-left: 70px;
+    margin-right:60px;
+    margin-top: 15px;
+  }
+  .radio{
+    margin-left: 112px
+  }
+

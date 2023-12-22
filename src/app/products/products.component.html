@@ -1,0 +1,32 @@
+<div class="sanpham">
+    <!-- <br /> -->
+    <a class="bold">SẢN PHẨM BEAURITY</a>
+    <!-- <a class="button" id="product"><a href="../src/shop.html"><button type="submit">Xem tất cả</button></a></a> -->
+    <!-- <br /> -->
+    <!-- <div > -->
+        <!-- <div > -->
+          <select class="form-select" [(ngModel)]="category">
+            <option value="All Style" >All Style</option>
+            <option *ngFor="let category of categories">{{ category }}</option>
+          </select>
+        </div>
+        <!-- <div class="col">
+          <button class="btn btn-primary w-100" (click)="fashionsByStyle(style)">Get Fashions</button> -->
+        <!-- </div>
+      </div> -->
+  <!-- </div> -->
+  
+  <p style="font-weight: bold; font-size: 30px; color: #2D982A; text-align: center;">SẢN PHẨM MỚI</p>
+<div class="danhmucproduct">
+  <div class="product" *ngFor="let cosmetic of cosmetics">
+    <div class="product-item">
+      <div class="product-item--img">
+        <img src="{{ cosmetic.Image }}" style="width: 180px;">
+      </div>
+      <p class="product-item--info">
+        {{cosmetic.Name}}
+      </p>
+      <p class="product-item--price">
+        {{cosmetic.Price}} VNĐ
+      </p>
+      <a><button class="product-item--add" id="clickaddtocartsame">Thêm vào giỏ hàng</button></a>

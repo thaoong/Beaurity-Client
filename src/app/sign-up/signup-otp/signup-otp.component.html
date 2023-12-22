@@ -1,0 +1,38 @@
+<div align="center" style="text-align: center; background-color: #2D982A; 
+color: white; font-size: 12px; display: flex; flex-direction: column; 
+justify-content: center; line-height:9px; padding:2px; padding-top: -10px;
+    padding-bottom: 10px;">
+  <br/>
+  <b>CHÀO MỪNG BẠN ĐẾN VỚI BEAURITY</b>
+</div>
+<app-navigate-bar></app-navigate-bar>
+<hr style="border: none; border-top: 25px solid #2D982A; margin: 0;">
+
+<div>
+    <form action="app-home" method="get" class="signup_form">
+    <div class="content--top"><a href="app-signup">Trở về</a></div>
+    <h2>XÁC NHẬN ĐĂNG KÝ</h2>
+    <div class="bold">
+        <p>Mã xác minh OTP đã gửi đến số điện thoại của bạn.</p>
+        <p>Vui lòng kiểm tra điện thoại nhé.</p>
+    </div>
+
+    <div class="input--content">
+        <input type="text" id="otp-input" [(ngModel)]="verificationCode" 
+        name="verificationCode" (blur)="checkVerificationCode()">
+      </div>
+      <div *ngIf="!isVerificationCodeValid" class="error-message">Mã xác nhận không hợp lệ</div>
+    
+
+    <div class="content--bottom">
+        <p><b>Chưa nhận được mã?</b></p>
+        <a id="otp-button" (click)="resend()" style="cursor: pointer">Gửi lại mã</a>
+      </div>
+
+      <div>
+        <button type="submit" class="login_button" (click)="onComplete()" style="cursor: pointer">HOÀN TẤT</button>
+      </div>
+    </form>
+  </div>
+
+

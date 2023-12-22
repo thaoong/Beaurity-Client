@@ -1,0 +1,132 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+<div class="main-shopping">
+  <p class="shopping-navigate"><a routerLink="/app-home">Trang chủ</a> / <a routerLink="/app-cart">Giỏ hàng</a></p>
+  <div class="shopping__cart">
+    <div class="shopping__cart-left">
+      <div class="shopping__cart-left--header">
+        <h3>Giỏ hàng ({{quantityItem}})</h3>
+      </div>
+      <div class="content-error" *ngIf="display; else viewItem">
+        <img class="img_icon" src="assets/image/shopping-cart/empty-cart.png" alt="">
+        <h4 style="color:rgb(116, 116, 116);">Bạn chưa có sản phẩm nào trong giỏ hàng!</h4>
+        <button class="orther__product-item--add" style="margin-top: 20px; margin-bottom: 20px; width:18%; background-color:#E0F8E4; border-color:#2D982A ;" id="clicktoreturn">Về trang chủ</button>
+
+      </div>
+      <ng-template #viewItem>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class="border-0 align-left">
+                  <div class="p-2 px-3 text-uppercase"></div>
+                </th>
+                <th scope="col" class="border-0  align-left">
+                  <div>Sản phẩm</div>
+                </th>
+                <th scope="col" class="border-0  align-left">
+                  <div class="p-2 px-3 text-uppercase"></div>
+                </th>
+                <th scope="col" class="border-0  align-left">
+                  <div class="py-2">Đơn giá</div>
+                </th>
+                <th scope="col" class="border-0  align-left">
+                  <div class="py-2">Số lượng</div>
+                </th>
+                <th scope="col" class="border-0  align-left">
+                  <div class="py-2">Remove</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="table-body-spacing">
+              <tr *ngFor="let item of cartItems">
+                <td class="border-0 align-left">
+                  <div class="p-2">
+                    <div class="shopping__cart-left--detail-row-check">
+                      <input type="checkbox" (click)="calculateTotalPrice(item)">
+                    </div>
+                  </div>
+                </td>
+                <td class="border-0 align-center">
+                  <div>
+                    <div>
+                      <img src="{{ item.Image }}" alt="" width="70" class="img-fluid rounded shadow-sm">
+                    </div>
+                  </div>
+                </td>
+                <td class="border-0 align-left">{{item.Name}} VNĐ</td>
+                <td class="border-0 align-left">{{item.Price}} VNĐ</td>
+                <td class="border-0 align-left">
+                  <div class="shopping__cart-left--detail-row-quantity">
+                    <button (click)="decrease(item)">-</button>
+                    <input type="text" [(ngModel)]="item.quantity" (input)="updateQuantity(item)">
+                    <button (click)="increase(item)">+</button>
+                  </div>
+                </td>
+                <td class="border-0 align-center">
+                  <button (click)="removeFromCart(item._id)" class="material-icons-outlined shopping__cart-left--detail-row-delete">
+                    delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </ng-template>
+    </div>
+    <div class="shopping__cart-right">
+      <p class="shopping__cart-right--header">
+        <span class="material-icons-outlined">shopping_bag</span>
+        <span class="title-bag">Đơn hàng</span>
+      </p>
+      <p class="shopping__cart-right--row">
+        <span class="shopping__cart-right--row-left">Tổng tiền</span>
+        <span class="shopping__cart-right--row-right">{{ total }} VNĐ</span>
+      </p>
+      <p class="shopping__cart-right--row">
+        <span class="shopping__cart-right--row-left">Tạm tính</span>
+        <span class="shopping__cart-right--row-right">{{ preprice }} VNĐ</span>
+      </p>
+      <p class="shopping__cart-right--row shopping__cart-right--row--button">
+        <button class="shopping__cart-right--row--button" (click)="makePayment()">Đặt hàng</button>
+      </p>
+    </div>
+  </div>
+
+  <p class="shopping__orther-product--header">Sản phẩm khác</p>
+  <div class="danhmucproduct">
+    <div class="product" *ngFor="let same_cosmetic of cosmetics.slice(0,5)">
+      <div class="product-item">
+        <div (click)="viewCosmeticDetail(same_cosmetic)">
+          <div class="product-item--img">
+            <img src="{{ same_cosmetic.Image }}" style="width: 180px;">
+          </div>
+          <p class="product-item--info">{{ same_cosmetic.Name }}</p>
+          <p class="product-item--price">{{ same_cosmetic.Price }} VNĐ</p>
+        </div>
+        <button class="orther__product-item--add" (click)="addToCart(same_cosmetic)">
+          Thêm vào giỏ hàng
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- popup -->
+<div class="popup" *ngIf="isLogin">
+  <div class="popup-container">
+    <h2 class="popup-title">Đặt hàng</h2>
+    <hr>
+    <p class="popup-message">Bạn vui lòng <span class="main-color">đăng nhập</span> để tiếp tục đặt hàng nhé!</p>
+    <div class="popup-buttons">
+      <button class="popup-button" (click)="onLogin()">Đăng nhập</button>
+      <button class="popup-button" (click)="onBack()">Trở lại</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+
+<p class="header">🎄 Xmas Collection 🎄</p>
+  <div class="danhmucproduct">
+    <div class="product" *ngFor="let same_cosmetic of cosmetics.slice(0,5)">
+      <div class="product-item">
+        <div (click)="viewCosmeticDetail(same_cosmetic)">
+          <div class="product-item--img">
+            <img src="{{ same_cosmetic.Image }}" style="width: 180px;">
+          </div>
+          <p class="product-item--info">{{ same_cosmetic.Name }}</p>
+          <p class="product-item--price">{{ same_cosmetic.Price }} VNĐ</p>
+        </div>
+        <button class="product-item--add" (click)="addToCart(same_cosmetic)">
+          Thêm vào giỏ hàng
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Add the snowfall effect -->
+<canvas id="snowfallCanvas"></canvas>
